@@ -240,7 +240,7 @@ gradle-app.setting
 *.hprof
 
 ### ReScript ###
-*.bs.js
+*.js
 frontend/lib/
 .merlin
 .bsb.lock
