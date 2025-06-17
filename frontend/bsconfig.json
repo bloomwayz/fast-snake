@@ -11,7 +11,7 @@
   "bsc-flags": [
     "-open JsonCombinators"
   ],
-  "suffix": ".bs.js",
+  "suffix": ".js",
   "reason": { "react-jsx": 3 },
   "bs-dependencies": [
     "@rescript/react",
