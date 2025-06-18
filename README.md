@@ -1,1 +1,1 @@
-# fast-snake
+# super-snake
