@@ -6,12 +6,24 @@ import java.util.ArrayDeque;
 
 public class Snake {
     public enum Direction {
-        Up, Down, Left, Right;
+        Up    (1),
+        Down  (-1),
+        Left  (2),
+        Right (-2);
+
+        private final int value;
+
+        Direction(int value) {
+            this.value = value;
+        }
+        
+        public int getValue() {
+            return value;
+        }
     }
 
     private Deque<Position> body;
     private Direction direction;
-    // private boolean willTurn = false;
 
     public Snake() {
         body = new ArrayDeque<>();
@@ -38,8 +50,8 @@ public class Snake {
     }
 
     public void setDirection(Direction direction) {
-        if (direction != this.direction) {
-            // willTurn = true;
+        if ((direction != this.direction)
+            && (direction.getValue() + this.direction.getValue() != 0)) {
             this.direction = direction;
         }
     }
