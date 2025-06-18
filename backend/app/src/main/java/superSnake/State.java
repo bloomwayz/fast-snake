@@ -28,8 +28,9 @@ public class State {
     }
 
     public final List<List<Cell>> grid;
-    private int score;
-    public GameState gameState;
+    private int score = 0;
+    private int level = 1;
+    public GameState gameState = GameState.Paused;
 
     public State() {
         grid = new ArrayList<>(ROWS);
@@ -40,9 +41,6 @@ public class State {
             }
             grid.add(row);
         }
-
-        score = 0;
-        gameState = GameState.Paused;
     }
 
     public Cell getCell(Position pos) {
@@ -73,5 +71,13 @@ public class State {
 
     public void upScore() {
         score++;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void upLevel() {
+        level++;
     }
 }

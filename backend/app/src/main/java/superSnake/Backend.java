@@ -10,7 +10,7 @@ import io.javalin.Javalin;
 
 public class Backend {
     public static Game game = new Game();
-    public static GameLoop loop = new GameLoop(1);
+    public static GameLoop loop = new GameLoop(5);
 
     public static void main(String[] args) {
         // start the game loop

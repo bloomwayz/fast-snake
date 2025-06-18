@@ -1,9 +1,10 @@
 package superSnake;
 
+import java.util.Optional;
 import superSnake.State.GameState;
 
 public class GameLoop extends Thread {
-    private final int speed; // ticks per second
+    private volatile int speed; // ticks per second
     private volatile boolean running = true;
 
     public GameLoop(int speed) {
@@ -23,7 +24,11 @@ public class GameLoop extends Thread {
                 continue;
             }
 
-            Game.update(); // update game state
+            Optional<Integer> speedOpt = Game.update(); // update game state
+            if (speedOpt.isPresent()) {
+                int newSpeed = speedOpt.get();
+                setSpeed(newSpeed);
+            }
 
             try {
                 Thread.sleep(1000 / speed); // milliseconds
@@ -35,5 +40,9 @@ public class GameLoop extends Thread {
 
     public void stopLoop() {
         running = false;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

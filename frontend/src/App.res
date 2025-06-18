@@ -58,12 +58,14 @@ module State = {
   type t = {
     grid: Grid.t,
     score: int,
+    level: int,
     gameState: gameState,
   }
 
   let init = () => {
     grid: Grid.init(),
     score: 0,
+    level: 1,
     gameState: Paused,
   }
 }
@@ -92,6 +94,7 @@ module Decode = {
   let state = object(field => {
     State.grid: field.required(. "grid", array(array(string->map(cell)))),
     State.score: field.required(. "score", int),
+    State.level: field.required(. "level", int),
     State.gameState: field.required(. "gameState", string->map(gameState)),
   })
 }
@@ -188,7 +191,7 @@ let make = () => {
   <div className="App">
     <h1> {"Snake Game"->React.string} </h1>
     <h3> {`Score: ${Belt.Int.toString(state.score)}`->React.string} </h3>
-    <h3> {`Key: key`->React.string} </h3>
+    <h3> {`Level: ${Belt.Int.toString(state.level)}`->React.string} </h3>
     <div style={ReactDOM.Style.make(~display="flex", ~justifyContent="center", ())}>
       <div
         style={ReactDOM.Style.make(
