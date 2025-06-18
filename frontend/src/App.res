@@ -189,7 +189,8 @@ let make = () => {
   })
 
   <div className="App">
-    <h1> {"Snake Game"->React.string} </h1>
+    <h1> {"Super Snake Game"->React.string} </h1>
+    <p> {"Powered by Javalin & React"->React.string} </p>
     <h3> {`Score: ${Belt.Int.toString(state.score)}`->React.string} </h3>
     <h3> {`Level: ${Belt.Int.toString(state.level)}`->React.string} </h3>
     <div style={ReactDOM.Style.make(~display="flex", ~justifyContent="center", ())}>
@@ -224,7 +225,7 @@ let make = () => {
     </div>
     {if state.gameState == Paused {
       <>
-        <h3 style={ReactDOM.Style.make(~color="black", ())}> {"Press arrow key to start"->React.string} </h3>
+        <p> {"Press arrow key to start"->React.string} </p>
       </>
     } else if state.gameState == GameOver {
       <>
