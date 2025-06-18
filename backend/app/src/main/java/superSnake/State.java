@@ -70,7 +70,7 @@ public class State {
     }
 
     public void upScore() {
-        score++;
+        score += Game.SPEED[level - 1];
     }
 
     public int getLevel() {

@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.Optional;
 
 public class Game {
-    private static final int LEVELS = 12;
-    private static final int[] SPEED = {5, 7, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20};
-    private static final int[] THRESHOLD = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 35, 40, 50};
+    public static final int LEVELS = 12;
+    public static final int[] SPEED = {5, 7, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20};
+    public static final int[] THRESHOLD = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 35, 40, 50};
 
     private static State state;
     private static Snake snake;
