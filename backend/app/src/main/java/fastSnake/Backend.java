@@ -52,11 +52,6 @@ public class Backend {
         });
     }
 
-    public static class InitObject {
-        public boolean initialized;
-    }
-
-    public static class DirObject {
-        public Snake.Direction direction;
-    }
+    public record InitObject(boolean initialized) {}
+    public record DirObject(Snake.Direction direction) {}
 }
