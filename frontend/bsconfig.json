@@ -12,7 +12,7 @@
     "-open JsonCombinators"
   ],
   "suffix": ".js",
-  "reason": { "react-jsx": 3 },
+  "jsx": { "version": 4 },
   "bs-dependencies": [
     "@rescript/react",
     "@glennsl/rescript-fetch",
