@@ -64,7 +64,7 @@ module State = {
   let init = () => {
     grid: Grid.init(),
     score: 0,
-    gameState: Playing,
+    gameState: Paused,
   }
 }
 
@@ -134,14 +134,24 @@ let make = () => {
     setState(_ => State.init());
     postJson("initialize", {
       "initialized": Js.Json.boolean(true),
-    })
+    })->ignore
+  }
+
+  let togglePause = isPaused => {
+    postJson("toggle-pause", {
+      "isPaused": Js.Json.boolean(isPaused)
+    })->ignore
   }
 
   let changeDirection = dir => {
+    switch state.gameState {
+    | Paused => togglePause(false)->ignore
+    | _ => ()
+    }
     setDir(_ => dir)
     postJson("set-direction", {
       "direction": Direction.toString(dir),
-    })
+    })->ignore
   }
 
   let startInterval = () => {
@@ -153,15 +163,20 @@ let make = () => {
   React.useEffect0(() => {
     initialize()->ignore
     window["addEventListener"]("keydown", event => {
-      switch event["key"] {
-      | "w" | "ArrowUp" | "k" => changeDirection(Up)->ignore
-      | "s" | "ArrowDown" | "j" => changeDirection(Down)->ignore
-      | "a" | "ArrowLeft" | "h" => changeDirection(Left)->ignore
-      | "d" | "ArrowRight" | "l" => changeDirection(Right)->ignore
-      // | "p" | " " => dispatch(TogglePause)
-      | _ => ()
+      switch state.gameState {
+      | Playing | Paused => {
+        switch event["key"] {
+        | "w" | "ArrowUp" | "k" => changeDirection(Up)
+        | "s" | "ArrowDown" | "j" => changeDirection(Down)
+        | "a" | "ArrowLeft" | "h" => changeDirection(Left)
+        | "d" | "ArrowRight" | "l" => changeDirection(Right)
+        | "p" | "Escape" | " " => togglePause(true)
+        | _ => togglePause(false)
+        }
       }
-    })
+      | GameOver => ()
+      }
+    })->ignore
     startInterval()
     Some(
       () => {
@@ -173,7 +188,7 @@ let make = () => {
   <div className="App">
     <h1> {"Snake Game"->React.string} </h1>
     <h3> {`Score: ${Belt.Int.toString(state.score)}`->React.string} </h3>
-    <h3> {`Direction: ${Direction.toString(dir)}`->React.string} </h3>
+    <h3> {`Key: key`->React.string} </h3>
     <div style={ReactDOM.Style.make(~display="flex", ~justifyContent="center", ())}>
       <div
         style={ReactDOM.Style.make(
@@ -204,7 +219,11 @@ let make = () => {
         ->React.array}
       </div>
     </div>
-    {if state.gameState == GameOver {
+    {if state.gameState == Paused {
+      <>
+        <h3 style={ReactDOM.Style.make(~color="black", ())}> {"Press arrow key to start"->React.string} </h3>
+      </>
+    } else if state.gameState == GameOver {
       <>
         <h1 style={ReactDOM.Style.make(~color="red", ())}> {"Game Over!"->React.string} </h1>
         <button

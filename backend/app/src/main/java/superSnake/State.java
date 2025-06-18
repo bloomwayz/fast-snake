@@ -42,7 +42,7 @@ public class State {
         }
 
         score = 0;
-        gameState = GameState.Playing;
+        gameState = GameState.Paused;
     }
 
     public Cell getCell(Position pos) {

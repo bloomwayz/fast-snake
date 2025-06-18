@@ -13,16 +13,17 @@ public class GameLoop extends Thread {
     @Override
     public void run() {
         while (running) {
-            if (Game.getState().gameState == GameState.GameOver) {
+            // when not playing
+            if (Game.getState().gameState != GameState.Playing) {
                 try {
-                    Thread.sleep(100); // 잠시 대기
+                    Thread.sleep(100); // 100ms wait
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
                 continue;
             }
 
-            Game.update(); // 게임 상태 업데이트
+            Game.update(); // update game state
 
             try {
                 Thread.sleep(1000 / speed); // milliseconds

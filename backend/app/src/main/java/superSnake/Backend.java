@@ -50,8 +50,21 @@ public class Backend {
             System.out.println("Direction set to: " + direction);
             ctx.result("Direction set to: " + direction);
         });
+
+        app.post("/toggle-pause", ctx -> {
+            PausedObject submission = ctx.bodyAsClass(PausedObject.class);
+            if (submission.isPaused) {
+                Game.getState().gameState = State.GameState.Paused;
+                System.out.println("Game paused.");
+            } else if (Game.getState().gameState == State.GameState.Paused) {
+                Game.getState().gameState = State.GameState.Playing;
+                System.out.println("Game resumed.");
+            }
+            ctx.result("Pause toggled.");
+        });
     }
 
     public record InitObject(boolean initialized) {}
     public record DirObject(Snake.Direction direction) {}
+    public record PausedObject(boolean isPaused) {}
 }
