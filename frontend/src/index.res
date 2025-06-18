@@ -3,6 +3,8 @@
 let rootQuery = ReactDOM.querySelector("#root")
 
 switch rootQuery {
-| None => ()
-| Some(root) => ReactDOM.render(<App />, root)
+| Some(rootElement) =>
+  let root = ReactDOM.Client.createRoot(rootElement)
+  ReactDOM.Client.Root.render(root, <App />)
+| None => failwith("DOM root is missing")
 }
