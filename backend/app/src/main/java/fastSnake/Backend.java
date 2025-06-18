@@ -10,8 +10,13 @@ import io.javalin.Javalin;
 
 public class Backend {
     public static Game game = new Game();
+    public static GameLoop loop = new GameLoop(1);
 
     public static void main(String[] args) {
+        // start the game loop
+        loop.start();
+
+        // start the server
         var app = Javalin.create(config -> {
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> {
@@ -24,7 +29,10 @@ public class Backend {
             InitObject submission = ctx.bodyAsClass(InitObject.class);
             if (submission.initialized) {
                 System.out.println("Frontend initialized!");
+                loop.stopLoop();
                 game = new Game();
+                loop = new GameLoop(10);
+                loop.start();
                 ctx.result("Backend initialized!");
             }
         });

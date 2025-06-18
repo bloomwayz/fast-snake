@@ -1,8 +1,11 @@
 package fastSnake;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class State {
-    public static final int ROWS = 15;
-    public static final int COLS = 17;
+    public static final int ROWS = Position.ROW_MAX;
+    public static final int COLS = Position.COL_MAX;
 
     public enum Cell {
         Snake ("*"),
@@ -24,19 +27,51 @@ public class State {
         Playing, Paused, GameOver;
     }
 
-    public Cell[][] grid;
-    public int score;
+    public final List<List<Cell>> grid;
+    private int score;
     public GameState gameState;
 
     public State() {
-        grid = new Cell[ROWS][COLS];
+        grid = new ArrayList<>(ROWS);
         for (int i = 0; i < ROWS; i++) {
+            List<Cell> row = new ArrayList<>(COLS);
             for (int j = 0; j < COLS; j++) {
-                grid[i][j] = Cell.Empty;
+                row.add(Cell.Empty);
             }
+            grid.add(row);
         }
 
-        score = 10;
+        score = 0;
         gameState = GameState.Playing;
+    }
+
+    public Cell getCell(Position pos) {
+        return grid.get(pos.row).get(pos.col);
+    }
+
+    public void setCell(Position pos, Cell cell) {
+        int row = pos.row;
+        int col = pos.col;
+        grid.get(row).set(col, cell);
+    }
+
+    public void setToSnake(Position pos) {
+        setCell(pos, Cell.Snake);
+    }
+
+    public void setToFood(Position pos) {
+        setCell(pos, Cell.Food);
+    }
+
+    public void setToEmpty(Position pos) {
+        setCell(pos, Cell.Empty);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void upScore() {
+        score++;
     }
 }
