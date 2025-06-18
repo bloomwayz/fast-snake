@@ -1,4 +1,4 @@
-package fastSnake;
+package superSnake;
 
 public final class Position {
     public static final int ROW_MAX = 15;

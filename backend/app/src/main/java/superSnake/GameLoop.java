@@ -1,6 +1,6 @@
-package fastSnake;
+package superSnake;
 
-import fastSnake.State.GameState;
+import superSnake.State.GameState;
 
 public class GameLoop extends Thread {
     private final int speed; // ticks per second

@@ -1,10 +1,10 @@
 /**
  * SNU Computer Programming Spring 2025
- * Fast Snake Project
+ * SuperSnake Game
  * 
  * @author Junyoung Park <bloomwayz@snu.ac.kr>
  */
-package fastSnake;
+package superSnake;
 
 import io.javalin.Javalin;
 

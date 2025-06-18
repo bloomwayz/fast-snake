@@ -1,4 +1,4 @@
-package fastSnake;
+package superSnake;
 
 import java.util.List;
 import java.util.ArrayList;

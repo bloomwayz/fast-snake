@@ -1,4 +1,4 @@
-package fastSnake;
+package superSnake;
 
 import java.util.Random;
 import java.util.Optional;

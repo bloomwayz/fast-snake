@@ -1,4 +1,4 @@
-package fastSnake;
+package superSnake;
 
 import java.util.Optional;
 import java.util.Deque;

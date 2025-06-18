@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "super-snake",
   "sources": {
     "dir": "src",
     "subdirs": true
