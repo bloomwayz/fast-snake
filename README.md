@@ -1,6 +1,5 @@
 <div align="center">
   <h1> 🟩 SuperSnake 🟥 </h1>
-
   <p align="center">
     <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"/>
     <img src="https://img.shields.io/badge/rescript-E6484F?style=for-the-badge&logo=rescript&logoColor=white"/>
@@ -9,16 +8,21 @@
 </div>
 <br></br>
 
+
 ## 🍎 About
+
 - **SuperSnake** is a snake game variation which has a multi-stage system.
 - The more food the snake eats, the faster it will run!
 
+
 ## ⏯️ Rules
+
 - A sequence of green blocks is the snake, and a red block is the food.
 - If you press the **arrow key**, the snake runs in that direction.
 - When the snake **gets the food**, it will be **one block longer**.
 - The game is over when the snake **hit the wall** or it is **collided with itself**.
 - *Sometimes* the level goes up and **the snake gets faster…**
+
 
 ## 🕹️ Key bindings
 
@@ -30,7 +34,9 @@
 | ➡️, `D`, `L` | Go right |
 | `esc`, `space`, `P` | Pause/Resume |
 
+
 ## How to Run
+
 0. **SuperSnake** needs Node.js, npm, and Gradle. If you do not have them, please check the installation guides below.
    - [How to install Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
    - [How to install Gradle](https://gradle.org/install/)
@@ -56,3 +62,8 @@
    ```
 
 5. Finally, you can see **SuperSnake** on `http://localhost:3000`.
+
+
+## 👷 Trivia
+
+- **SuperSnake** is a term project for SNU undergraduate course *Computer Programming*.
