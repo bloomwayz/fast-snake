@@ -67,3 +67,4 @@
 ## 👷 Trivia
 
 - **SuperSnake** is a term project for SNU undergraduate course *Computer Programming*.
+- **SuperSnake** is inspired by [eolculnamo2/snake-game-rescript](https://github.com/eolculnamo2/snake-game-rescript) project.
