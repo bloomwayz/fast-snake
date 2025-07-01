@@ -35,7 +35,7 @@
 | `esc`, `space`, `P` | Pause/Resume |
 
 
-## How to Run
+## 💿 How to Run
 
 0. **SuperSnake** needs Node.js, npm, and Gradle. If you do not have them, please check the installation guides below.
    - [How to install Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
